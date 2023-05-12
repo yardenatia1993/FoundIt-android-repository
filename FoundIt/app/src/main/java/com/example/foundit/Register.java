@@ -19,6 +19,7 @@ import com.google.android.gms.tasks.Task;
 import com.google.android.material.textfield.TextInputEditText;
 import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.firestore.DocumentReference;
 import com.google.firebase.firestore.FirebaseFirestore;
 
@@ -32,6 +33,7 @@ public class Register extends AppCompatActivity {
     FirebaseAuth mAuth;
     ProgressBar progressBar;
     FirebaseFirestore db;
+    DatabaseReference myRef;
 
     @SuppressLint("MissingInflatedId")
     @Override
@@ -73,27 +75,18 @@ public class Register extends AppCompatActivity {
                     Toast.makeText(Register.this, "Enter password", Toast.LENGTH_SHORT).show();
                     return;
                 }
-                User user = new User(email);
 
-                db.collection("users").document(mAuth.getCurrentUser().getUid()).set(user);
                 mAuth.createUserWithEmailAndPassword(email, password)
                         .addOnCompleteListener(new OnCompleteListener<AuthResult>() {
                             @Override
                             public void onComplete(@NonNull Task<AuthResult> task) {
                                 if (task.isSuccessful()) {
-                                    Map<String,Object> user = new HashMap<>();
-                                    user.put("username", username);
-                                    db.collection("users").add(user).addOnSuccessListener(new OnSuccessListener<DocumentReference>() {
-                                        @Override
-                                        public void onSuccess(DocumentReference documentReference) {
-                                            progressBar.setVisibility(View.GONE);
-                                            Toast.makeText(Register.this, "Account Created.",
-                                                    Toast.LENGTH_SHORT).show();
-                                        }
-                                    });
+                                    User user =new User(editTextUsername.getText().toString(),editTextEmail.getText().toString());
+                                    myRef.child(mAuth.getUid()).setValue(user);
+                                    startActivity(new Intent(Register.this,MainActivity.class));
                                 } else {
                                     // If sign in fails, display a message to the user.
-                                    Toast.makeText(Register.this, "Authentication failed.",
+                                    Toast.makeText(Register.this, "Authentication failed\n"+task.getException().getMessage().toString(),
                                             Toast.LENGTH_SHORT).show();
                                 }
                             }
