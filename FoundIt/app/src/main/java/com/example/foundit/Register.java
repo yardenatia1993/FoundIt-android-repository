@@ -28,11 +28,11 @@ import java.util.Map;
 
 public class Register extends AppCompatActivity {
     TextInputEditText editTextEmail, editTextPassword, editTextUsername;
-    Button buttonReg;
+    Button buttonReg,btnLogin;
     FirebaseAuth mAuth;
     ProgressBar progressBar;
     FirebaseFirestore db;
-    TextView textView;
+
     @SuppressLint("MissingInflatedId")
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -45,8 +45,8 @@ public class Register extends AppCompatActivity {
         editTextUsername = findViewById(R.id.username);
         buttonReg = findViewById(R.id.btn_register);
         progressBar = findViewById(R.id.progressBar);
-        textView = findViewById(R.id.loginNow);
-        textView.setOnClickListener(new View.OnClickListener(){
+        btnLogin = findViewById(R.id.loginNow);
+        btnLogin.setOnClickListener(new View.OnClickListener(){
             @Override
             public void onClick(View view){
                 Intent intent = new Intent(getApplicationContext(),Login.class);

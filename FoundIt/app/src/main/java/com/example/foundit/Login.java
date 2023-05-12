@@ -50,7 +50,7 @@ public class Login extends AppCompatActivity {
         textView.setOnClickListener(new View.OnClickListener(){
             @Override
             public void onClick(View view){
-                Intent intent = new Intent(getApplicationContext(), com.example.playonroad.Register.class);
+                Intent intent = new Intent(getApplicationContext(), com.example.foundit.Register.class);
                 startActivity(intent);
                 finish();
             }

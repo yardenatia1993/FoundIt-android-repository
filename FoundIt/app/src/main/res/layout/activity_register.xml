@@ -6,7 +6,7 @@
     android:layout_height="match_parent"
     android:gravity="center"
     tools:context=".Register"
-    android:background="@drawable/MushroomBG"
+    android:background="@drawable/mushroombg"
     android:orientation="vertical"
     android:padding="15dp">
     <TextView

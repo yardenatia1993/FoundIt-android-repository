@@ -1,6 +1,0 @@
-<?xml version="1.0" encoding="utf-8"?>
-<resources>
-    <item name="username" type="id">username</item>
-    <item name="btn_register" type="id">btn_register</item>
-    <item name="loginNow" type="id">login now</item>
-</resources>
