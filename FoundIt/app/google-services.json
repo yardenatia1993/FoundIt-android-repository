@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "226725339451",
+    "project_id": "found-it-de1a8",
+    "storage_bucket": "found-it-de1a8.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:226725339451:android:fd48a100a1da2384de571e",
+        "android_client_info": {
+          "package_name": "com.example.foundit"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "226725339451-c1vbka5o1l280ngoh52avr1qngdm7o77.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBUT5TUwmTKlaF9jifZe4m7G_dOzlEzRPk"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "226725339451-c1vbka5o1l280ngoh52avr1qngdm7o77.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
