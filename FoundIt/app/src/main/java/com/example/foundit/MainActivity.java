@@ -1,10 +1,10 @@
 package com.example.foundit;
 
+import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 import android.annotation.SuppressLint;
 import android.content.Intent;
 import android.os.Bundle;
-import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
 
@@ -34,14 +34,28 @@ public class MainActivity extends AppCompatActivity {
             textView.setText(user.getEmail());
         }
 
-        button.setOnClickListener(new View.OnClickListener(){
-            @Override
-            public void onClick(View view){
-                FirebaseAuth.getInstance().signOut();
-                Intent intent = new Intent(getApplicationContext(),Login.class);
-                startActivity(intent);
-                finish();
-            }
+
+        button.setOnClickListener(view -> {
+            FirebaseAuth.getInstance().signOut();
+            Intent intent = new Intent(getApplicationContext(),Login.class);
+            startActivity(intent);
+            finish();
         });
+    }
+    @Override
+    public void onBackPressed() {
+        AlertDialog.Builder builder =new AlertDialog.Builder(this);
+        builder.setTitle("Already leave? ");
+        builder.setMessage("Are ou sure that you want to sign out?");
+        builder.setPositiveButton("Yes", (dialog, which) -> {
+            auth.signOut();
+            startActivity(new Intent(MainActivity.this, Register.class));
+        });
+        builder.setNegativeButton("No", (dialog, which) -> {
+            // Dismiss the dialog
+            dialog.dismiss();
+        });
+        builder.show();
+
     }
 }
