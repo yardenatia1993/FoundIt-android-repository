@@ -33,7 +33,6 @@ public class Register extends AppCompatActivity {
     FirebaseAuth mAuth;
     ProgressBar progressBar;
     FirebaseFirestore db;
-    DatabaseReference myRef;
 
     @SuppressLint("MissingInflatedId")
     @Override
@@ -82,7 +81,6 @@ public class Register extends AppCompatActivity {
                             public void onComplete(@NonNull Task<AuthResult> task) {
                                 if (task.isSuccessful()) {
                                     User user =new User(editTextUsername.getText().toString(),editTextEmail.getText().toString());
-                                    myRef.child(mAuth.getUid()).setValue(user);
                                     startActivity(new Intent(Register.this,MainActivity.class));
                                 } else {
                                     // If sign in fails, display a message to the user.
